@@ -1,8 +1,6 @@
 # Dockerfile
 FROM debian:bullseye
 
-RUN sed -i "s/httpredir/ftp.fr/" /etc/apt/sources.list
-
 RUN apt-get clean && apt-get update && apt-get install -y \ 
     gnupg \
     wget \
@@ -21,8 +19,6 @@ RUN apt-get autoclean && \
     rm -rf /var/lib/apt/lists/*
 
 COPY startup /usr/local/bin/
-
-#CMD startup
 
 CMD ["bash","startup"]
 
